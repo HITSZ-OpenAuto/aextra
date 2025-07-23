@@ -1,7 +1,8 @@
-import presetUno from '@unocss/preset-uno'
+import presetAttributify from '@unocss/preset-attributify'
+import presetWind4 from '@unocss/preset-wind4'
+import type { Preset } from 'unocss'
 import { defineConfig } from 'unocss'
 
 export default defineConfig({
-  // ...UnoCSS 选项
-  presets: [presetUno()]
+  presets: [presetAttributify() as Preset, presetWind4() as Preset]
 })

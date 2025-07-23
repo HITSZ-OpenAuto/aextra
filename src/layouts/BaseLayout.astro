@@ -1,0 +1,35 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import NavBar from "../components/NavBar.astro";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={title} />
+  </head>
+  <body>
+    <!-- TODO: Move navbar items to config file -->
+    <NavBar
+      items={[
+        { text: "文档", href: "/docs" },
+        { text: "博客", href: "/blog" },
+        { text: "新闻", href: "/news" },
+        { text: "友链", href: "/links" },
+        { text: "关于", href: "/about" },
+      ]}
+    />
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

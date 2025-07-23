@@ -1,1 +1,1 @@
-export { ITheme } from './theme'
+export { ITheme } from "./theme";

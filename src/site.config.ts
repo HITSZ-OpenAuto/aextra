@@ -1,22 +1,22 @@
-import { z } from 'astro:content'
-import { ITheme } from '@/types'
+import { z } from "astro:content";
+import { ITheme } from "@/types";
 
-type ThemeConfig = z.infer<typeof ITheme>
+type ThemeConfig = z.infer<typeof ITheme>;
 
 export const theme: ThemeConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: 'HITSZ 自动化课程攻略共享计划',
+  title: "HITSZ 自动化课程攻略共享计划",
   /** Will be used in index page & copyright declaration */
-  author: 'HITSZ OpenAuto',
+  author: "HITSZ OpenAuto",
   /** Description metadata for your website. Can be used in page metadata. */
-  description: '由 HITSZ OpenAuto 维护，为 HITSZ 学子提供课程攻略共享服务',
+  description: "由 HITSZ OpenAuto 维护，为 HITSZ 学子提供课程攻略共享服务",
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
-  favicon: '/favicon/favicon.ico',
+  favicon: "/favicon/favicon.ico",
 
   /** Set a logo image to show in the homepage. */
   logo: {
-    src: 'src/assets/avatar.png',
-    alt: 'Avatar'
-  }
-}
+    src: "src/assets/avatar.png",
+    alt: "Avatar",
+  },
+};
