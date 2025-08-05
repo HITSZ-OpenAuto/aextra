@@ -2,6 +2,8 @@
 import type { MarkdownHeading } from "astro";
 import React, { useEffect, useMemo, useState } from "react";
 
+import { throttle } from "../utils.ts";
+
 interface Props {
   headings: MarkdownHeading[];
 }
@@ -98,10 +100,11 @@ export default function TOC({ headings }: Props) {
         setItems(newItems);
       }
     };
+    const throttledHandleScroll = throttle(handleScroll, 100);
 
-    handleScroll(); // initial activation
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    throttledHandleScroll(); // initial activation
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", throttledHandleScroll);
   }, [headings]);
 
   return useMemo(
