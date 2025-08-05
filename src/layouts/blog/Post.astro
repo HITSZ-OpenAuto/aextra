@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import BaseLayout from "../BaseLayout.astro";
+
+interface Props {
+  data: CollectionEntry<"blog">["data"];
+}
+
+const props = Astro.props;
+---
+
+<BaseLayout>
+  <div class="flex flex-row justify-center">
+    <div class="w-1/3 p-4">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
