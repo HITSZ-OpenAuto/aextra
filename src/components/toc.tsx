@@ -47,14 +47,9 @@ export default function TOC({ headings }: Props) {
 
       if (offsets.length > 0) {
         const activeId = offsets[0]!.id;
-        let activeIndex = -1;
-        for (let i = 0; i < headings.length; i++)
-          if (headings[i].slug === activeId) {
-            activeIndex = i;
-            break;
-          }
+        const activeIndex = headings.findIndex((h) => h.slug === activeId);
         const newItems: Heading[] = [];
-        if (activeIndex != -1) {
+        if (activeIndex !== -1) {
           const path = findPath(headings, activeIndex);
           const numbers = [];
           let depth = 0;
