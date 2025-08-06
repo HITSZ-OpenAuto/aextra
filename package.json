@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@unocss/preset-attributify": "^66.3.3",
+    "@unocss/preset-typography": "^66.4.1",
     "@unocss/preset-uno": "^66.3.2",
     "@unocss/preset-wind4": "^66.3.3",
     "unocss": "^66.3.2"

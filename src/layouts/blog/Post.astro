@@ -16,9 +16,9 @@ const props = Astro.props;
 
 <BaseLayout>
   <div class="flex flex-row justify-center">
-    <div class="w-1/3 p-4">
+    <article class="prose w-1/3 p-4">
       <slot />
-    </div>
+    </article>
     <TOC headings={props.headings} client:load />
   </div>
 </BaseLayout>
