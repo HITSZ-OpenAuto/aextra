@@ -122,9 +122,10 @@ export default function TOC({
             >
               <a
                 href={`#${h.slug}`}
-                className={`block transition-colors ${
-                  h.isActive ? "text-blue-600 font-bold" : "text-gray-600"
-                }`}
+                className={cn("block transition-colors", {
+                  "text-blue-600 font-bold": h.isActive,
+                  "text-gray-600": !h.isActive,
+                })}
               >
                 <span className="">{h.number}. </span>
                 <span>{h.text}</span>
