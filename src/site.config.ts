@@ -3,6 +3,8 @@ import { ITheme } from "@/types";
 
 type ThemeConfig = z.infer<typeof ITheme>;
 
+export const dataFormat = "YYYY-MM-DD";
+
 export const theme: ThemeConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
