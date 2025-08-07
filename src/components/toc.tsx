@@ -107,16 +107,15 @@ export default function TOC({ headings }: Props) {
       // h-min is needed here to make sticky work
       <div className="text-sm sticky top-24 max-w-72 h-min ml-6">
         <ul className="space-y-1">
-          <span>本章目录</span>
+          <strong>本章目录</strong>
           {items.map((h) => (
             <li
               key={h.slug}
-              className="group flex items-center"
+              className="flex items-center"
               style={{
                 paddingLeft: `calc(var(--spacing) * ${(h.depth - 1) * 2})`,
               }}
             >
-              <div className="w-1 h-3 bg-amber mr-2 group-hover:h-1 transition-all duration-300"></div>
               <a
                 href={`#${h.slug}`}
                 className={`block transition-colors ${
