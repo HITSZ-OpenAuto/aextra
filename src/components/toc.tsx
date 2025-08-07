@@ -1,8 +1,8 @@
 // src/components/TOC.tsx
 import type { MarkdownHeading } from "astro";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, type HTMLAttributes } from "react";
 
-import { throttle } from "../utils.ts";
+import { cn, throttle } from "../utils.ts";
 
 interface Props {
   headings: MarkdownHeading[];
@@ -29,7 +29,11 @@ function findPath(headings: MarkdownHeading[], index: number): number[] {
   return path;
 }
 
-export default function TOC({ headings }: Props) {
+export default function TOC({
+  headings,
+  className,
+  ...props
+}: Props & HTMLAttributes<HTMLDivElement>) {
   const [activeId, setActiveId] = useState<string>("");
   const [items, setItems] = useState<Heading[]>([]);
 
@@ -105,7 +109,7 @@ export default function TOC({ headings }: Props) {
   return useMemo(
     () => (
       // h-min is needed here to make sticky work
-      <div className="text-sm sticky top-24 max-w-72 h-min ml-6">
+      <nav {...props} className={cn("text-sm sticky top-24 max-w-72 h-min ml-6", className)}>
         <ul className="space-y-1">
           <strong>本章目录</strong>
           {items.map((h) => (
@@ -128,7 +132,7 @@ export default function TOC({ headings }: Props) {
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
     ),
     [activeId, items],
   );

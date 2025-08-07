@@ -1,3 +1,6 @@
+import clsx, { type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function throttle<T extends (...args: unknown[]) => unknown>(
   fn: T,
   wait: number,
@@ -10,4 +13,8 @@ export function throttle<T extends (...args: unknown[]) => unknown>(
       return fn.apply(this, args) as ReturnType<T>;
     }
   };
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
