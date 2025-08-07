@@ -7,8 +7,16 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    author: z.string().optional(),
     pubDate: z.string().transform((str) => dayjs(str).format(dataFormat)),
+    authors: z
+      .array(
+        z.object({
+          name: z.string(),
+          link: z.string().url().optional(),
+          image: z.string().url().optional(),
+        }),
+      )
+      .optional(),
     tags: z.array(z.string()).optional(),
   }),
 });

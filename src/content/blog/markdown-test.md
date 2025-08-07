@@ -2,6 +2,11 @@
 title: 'Markdown Test'
 description: 'a test post for markdown rendering'
 pubDate: 'Aug 05 2025'
+authors: 
+  - name: HITSZ-OpenAuto
+    link: https://github.com/HITSZ-OpenAuto
+    image: https://github.com/HITSZ-OpenAuto.png
+tags: ['markdown', 'test']
 ---
 
 ---
