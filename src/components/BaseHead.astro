@@ -1,9 +1,15 @@
 ---
 import { theme } from "@/config";
 
-const { title, description, author } = theme;
+const { siteName, description, author } = theme;
 // If the `site` property is not configured, Astro.site will be undefined. This fallback prevents errors.
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || "http://localhost:4321");
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <meta charset="utf-8" />
@@ -11,7 +17,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "http://localhost
 <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 <meta name="robots" content="index, follow" />
 
-<title>{title}</title>
+<title>{title ? `${title} | ${siteName}` : siteName}</title>
 <meta name="description" content={description} />
 <meta content={author} name="author" />
 

@@ -11,7 +11,7 @@ export const INavBar = z.object({
 });
 
 export const ITheme = z.object({
-  title: z.string().max(24),
+  siteName: z.string().max(24),
   author: z.string().max(24),
   description: z.string().max(120),
   favicon: z.string(),

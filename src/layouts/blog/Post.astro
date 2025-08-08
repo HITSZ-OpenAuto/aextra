@@ -14,7 +14,7 @@ interface Props {
 const { data, headings } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout article title={data.title}>
   <h1 class="text-3xl font-bold line-height-loose">{data.title}</h1>
   <div class="flex items-center gap-x-1.5">
     <span>{data.pubDate}</span>

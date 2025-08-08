@@ -7,8 +7,8 @@ export const dataFormat = "YYYY-MM-DD";
 
 export const theme: ThemeConfig = {
   // === Basic configuration ===
-  /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: "HITSZ 自动化课程攻略共享计划",
+  /** SiteName for your website. Will be used in metadata and as browser tab title. */
+  siteName: "HITSZ 自动化课程攻略共享计划",
   /** Will be used in index page & copyright declaration */
   author: "HITSZ OpenAuto",
   /** Description metadata for your website. Can be used in page metadata. */
