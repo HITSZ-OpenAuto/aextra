@@ -6,7 +6,7 @@ import Expand from "@/assets/icon/expand.svg";
 
 import { pageWidth } from "../stores";
 
-export default function PageWidthCSSVar() {
+export default function SetPageWidth() {
   const width = useStore(pageWidth);
 
   useEffect(() => {
@@ -25,13 +25,8 @@ export default function PageWidthCSSVar() {
         onClick={setPageWidth}
         className="p-2 text-current hidden md:block opacity-50 hover:opacity-100 transition-all duration-300"
       >
-        <img className="block dark:hidden" src={Expand.src} width="20" alt="set-page-width" />
-        <img
-          className="hidden dark:block"
-          src={ExpandDark.src}
-          width="20"
-          alt="set-page-width-dark"
-        />
+        <img className="block dark:hidden" src={Expand.src} width="20" alt="" />
+        <img className="hidden dark:block" src={ExpandDark.src} width="20" alt="" />
         <span className="sr-only">Adjust Width</span>
       </button>
     ),

@@ -33,13 +33,13 @@ const { title } = Astro.props;
           <slot name="aside" />
         </aside>
         <article class="prose max-w-6xl w-full break-words flex min-w-0 justify-center pb-8">
-          <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+          <div class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
             <slot />
-          </main>
+          </div>
         </article>
-        <nav>
+        <div>
           <slot name="nav" />
-        </nav>
+        </div>
       </div>
     </main>
   </body>
