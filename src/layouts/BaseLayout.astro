@@ -3,6 +3,7 @@ import { theme } from "@/config";
 
 import BaseHead from "../components/BaseHead.astro";
 import NavBar from "../components/NavBar.astro";
+import { cn } from "../utils";
 
 const { navbar } = theme;
 
@@ -33,7 +34,12 @@ const { title, article } = Astro.props;
   <body>
     <NavBar items={navbar.items} />
     <div class="w-full">
-      <div class=`mx-auto flex duration-500 max-w-[var(--page-width,1280px)]`>
+      <div
+        class={cn(
+          "mx-auto flex duration-500",
+          article ? "max-w-[var(--page-width,1280px)]" : "max-w-1280px",
+        )}
+      >
         <aside class="w-64 md:shrink-0">
           <slot name="aside" />
         </aside>

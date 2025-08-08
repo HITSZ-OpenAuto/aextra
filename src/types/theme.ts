@@ -10,6 +10,13 @@ export const INavBar = z.object({
   items: z.array(NavBarItem),
 });
 
+export const IPage = z.object({
+  width: z.object({
+    normal: z.string().default("1280px"),
+    expand: z.string().default("1536px"),
+  }),
+});
+
 export const ITheme = z.object({
   siteName: z.string().max(24),
   author: z.string().max(24),
@@ -21,4 +28,5 @@ export const ITheme = z.object({
     alt: z.string(),
   }),
   navbar: INavBar,
+  page: IPage,
 });

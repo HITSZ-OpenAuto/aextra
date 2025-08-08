@@ -1,4 +1,6 @@
 ---
+import { theme } from "@/config";
+
 import Logo from "@/assets/logo.webp";
 
 import SetPageWidth from "../components/set-page-width";
@@ -57,6 +59,6 @@ const { items } = Astro.props;
       </svg>
       <span class="sr-only">GitHub</span>
     </a>
-    <SetPageWidth client:load />
+    <SetPageWidth {...theme.page.width} client:load />
   </nav>
 </div>

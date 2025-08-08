@@ -3,7 +3,7 @@ import { ITheme } from "@/types";
 
 type ThemeConfig = z.infer<typeof ITheme>;
 
-export const dataFormat = "YYYY-MM-DD";
+export const dataFormat = "MMM DD, YYYY";
 
 export const theme: ThemeConfig = {
   // === Basic configuration ===
@@ -30,5 +30,12 @@ export const theme: ThemeConfig = {
       { text: "友链", href: "/links" },
       { text: "关于", href: "/about" },
     ],
+  },
+
+  page: {
+    width: {
+      normal: "1280px",
+      expand: "1536px",
+    },
   },
 };

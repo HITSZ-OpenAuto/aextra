@@ -1,13 +1,24 @@
 import { useStore } from "@nanostores/react";
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import ExpandDark from "@/assets/icon/expand-dark.svg";
 import Expand from "@/assets/icon/expand.svg";
 
 import { pageWidth } from "../stores";
+import { cn } from "../utils.ts";
 
-export default function SetPageWidth() {
+interface Props {
+  normal: string;
+  expand: string;
+}
+
+export default function SetPageWidth({ normal, expand }: Props) {
+  const [loaded, setLoaded] = useState<boolean>(false);
   const width = useStore(pageWidth);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   useEffect(() => {
     // set CSS variable --page-width
@@ -15,21 +26,38 @@ export default function SetPageWidth() {
   }, [width]);
 
   const setPageWidth = useCallback(() => {
-    if (width === "1280px") pageWidth.set("1536px");
-    else pageWidth.set("1280px");
+    if (width === normal) pageWidth.set(expand);
+    else pageWidth.set(normal);
   }, [width]);
 
-  return useMemo(
+  const content = useMemo(
     () => (
-      <button
-        onClick={setPageWidth}
-        className="p-2 text-current hidden md:block opacity-50 hover:opacity-100 transition-all duration-300"
-      >
+      <>
         <img className="block dark:hidden" src={Expand.src} width="20" alt="" />
         <img className="hidden dark:block" src={ExpandDark.src} width="20" alt="" />
         <span className="sr-only">Adjust Width</span>
-      </button>
+      </>
     ),
-    [setPageWidth],
+    [],
+  );
+
+  return useMemo(
+    () =>
+      loaded ? (
+        <button
+          onClick={setPageWidth}
+          className={cn(
+            "p-2 text-current hidden md:block transition-all duration-300",
+            width === normal ? "opacity-50 hover:opacity-100" : "opacity-100 hover:opacity-50",
+          )}
+        >
+          {content}
+        </button>
+      ) : (
+        <button className="p-2 text-current hidden md:block transition-all duration-300 opacity-50 hover:opacity-100">
+          {content}
+        </button>
+      ),
+    [content, loaded, width, setPageWidth],
   );
 }
