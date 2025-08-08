@@ -10,7 +10,7 @@ export default function PageWidthCSSVar() {
   const width = useStore(pageWidth);
 
   useEffect(() => {
-    // 设置 CSS 变量 --page-width
+    // set CSS variable --page-width
     document.documentElement.style.setProperty("--page-width", width);
   }, [width]);
 
