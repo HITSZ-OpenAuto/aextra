@@ -109,7 +109,7 @@ export default function TOC({
   return useMemo(
     () => (
       // h-min is needed here to make sticky work
-      <nav {...props} className={cn("text-sm sticky top-24 max-w-72 h-min ml-6", className)}>
+      <div {...props} className={cn("text-sm sticky top-24 max-w-72 h-min ml-6", className)}>
         <ul className="space-y-1">
           <strong>本章目录</strong>
           {items.map((h) => (
@@ -133,7 +133,7 @@ export default function TOC({
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
     ),
     [activeId, items],
   );

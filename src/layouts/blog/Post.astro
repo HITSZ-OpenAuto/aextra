@@ -15,50 +15,43 @@ const { data, headings } = Astro.props;
 ---
 
 <BaseLayout>
-  <div class="mx-auto flex max-w-[1280px]">
-    <aside class="w-64 md:shrink-0"></aside>
-    <article class="prose max-w-6xl w-full break-words flex min-w-0 justify-center pb-8">
-      <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
-        <h1 class="text-3xl font-bold line-height-loose">{data.title}</h1>
-        <div class="flex items-center gap-x-1.5">
-          <span>{data.pubDate}</span>
-          <span class="w-2">·</span>
-          {
-            data.authors &&
-              data.authors.map((author) => (
-                <a
-                  class="group inline-flex items-center text-current gap-x-1.5"
-                  href={author.link || "#"}
-                  target="_blank"
-                >
-                  {author.image && (
-                    <img
-                      class="inline-block size-4 rounded-full"
-                      src={author.image}
-                      alt={`author-${author.name}-avatar`}
-                      loading="lazy"
-                    />
-                  )}
-                  <span class="group-hover:underline">{author.name}</span>
-                </a>
-              ))
-          }
-        </div>
-        {
-          data.tags && (
-            <div class="flex items-center gap-x-1.5">
-              {data.tags.map((tag) => (
-                // TODO: replace href with tag summary page link, e.g. `/tags/${tag}`
-                <a class="text-sm hover:underline" href="#">
-                  #{tag}
-                </a>
-              ))}
-            </div>
-          )
-        }
-        <slot />
-      </main>
-    </article>
-    <TOC headings={headings} className="w-64 shrink-0" client:load />
+  <h1 class="text-3xl font-bold line-height-loose">{data.title}</h1>
+  <div class="flex items-center gap-x-1.5">
+    <span>{data.pubDate}</span>
+    <span class="w-2">·</span>
+    {
+      data.authors &&
+        data.authors.map((author) => (
+          <a
+            class="group inline-flex items-center text-current gap-x-1.5"
+            href={author.link || "#"}
+            target="_blank"
+          >
+            {author.image && (
+              <img
+                class="inline-block size-4 rounded-full"
+                src={author.image}
+                alt={`author-${author.name}-avatar`}
+                loading="lazy"
+              />
+            )}
+            <span class="group-hover:underline">{author.name}</span>
+          </a>
+        ))
+    }
   </div>
+  {
+    data.tags && (
+      <div class="flex items-center gap-x-1.5">
+        {data.tags.map((tag) => (
+          // TODO: replace href with tag summary page link, e.g. `/tags/${tag}`
+          <a class="text-sm hover:underline" href="#">
+            #{tag}
+          </a>
+        ))}
+      </div>
+    )
+  }
+  <slot />
+  <TOC slot="nav" headings={headings} className="w-64 shrink-0" client:load />
 </BaseLayout>

@@ -16,8 +16,20 @@ const { title } = Astro.props;
   </head>
   <body>
     <NavBar items={navbar.items} />
-    <main class='w-full'>
-      <slot />
+    <main class="w-full">
+      <div class=`mx-auto flex duration-500 max-w-[var(--page-width,1280px)]`>
+        <aside class="w-64 md:shrink-0">
+          <slot name="aside" />
+        </aside>
+        <article class="prose max-w-6xl w-full break-words flex min-w-0 justify-center pb-8">
+          <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+            <slot />
+          </main>
+        </article>
+        <nav>
+          <slot name="nav" />
+        </nav>
+      </div>
     </main>
   </body>
 </html>
