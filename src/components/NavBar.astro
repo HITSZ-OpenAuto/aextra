@@ -1,6 +1,7 @@
 ---
 import Logo from "@/assets/logo.webp";
 
+import SetPageWidth from "../components/set-page-width";
 import type { NavBarItem } from "../types/theme";
 
 interface Props {
@@ -56,5 +57,6 @@ const { items } = Astro.props;
       </svg>
       <span class="sr-only">GitHub</span>
     </a>
+    <SetPageWidth client:load />
   </nav>
 </div>
