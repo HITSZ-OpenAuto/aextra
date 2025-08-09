@@ -32,7 +32,7 @@ const { title, article } = Astro.props;
     </script>
   </head>
   <body>
-    <NavBar items={navbar.items} />
+    <NavBar items={navbar.items} article={article} />
     <div class="w-full">
       <div
         class={cn(

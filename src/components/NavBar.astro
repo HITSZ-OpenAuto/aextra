@@ -8,8 +8,9 @@ import type { NavBarItem } from "../types/theme";
 
 interface Props {
   items: NavBarItem[];
+  article?: boolean;
 }
-const { items } = Astro.props;
+const { items, article } = Astro.props;
 ---
 
 <div class="sticky top-0 z-20 w-full bg-transparent print:hidden">
@@ -58,7 +59,6 @@ const { items } = Astro.props;
         </path>
       </svg>
       <span class="sr-only">GitHub</span>
-    </a>
-    <SetPageWidth {...theme.page.width} client:load />
+    </a>{article && <SetPageWidth {...theme.page.width} client:load />}
   </nav>
 </div>
