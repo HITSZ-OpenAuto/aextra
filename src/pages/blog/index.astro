@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+
+import BlogIndex from "../../layouts/blog/Index.astro";
+
+const posts = await getCollection("blog");
+
+posts.sort((a, b) => {
+  const dateA = new Date(a.data.pubDate).getTime();
+  const dateB = new Date(b.data.pubDate).getTime();
+  return dateB - dateA;
+});
+---
+
+<BlogIndex posts={posts} />
