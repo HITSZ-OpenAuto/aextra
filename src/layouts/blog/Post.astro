@@ -14,7 +14,7 @@ const { data, headings } = Astro.props;
 ---
 
 <BaseLayout article title={data.title}>
-  <h1 class="text-3xl font-bold line-height-loose">{data.title}</h1>
+  <h1 class="line-height-loose text-3xl font-bold">{data.title}</h1>
   <div class="flex items-center gap-x-1.5">
     <span>{data.pubDate}</span>
     <span class="w-2">·</span>
@@ -22,7 +22,7 @@ const { data, headings } = Astro.props;
       data.authors &&
         data.authors.map((author) => (
           <a
-            class="group inline-flex items-center text-current gap-x-1.5"
+            class="group inline-flex items-center gap-x-1.5 text-current"
             href={author.link || "#"}
             target="_blank"
           >

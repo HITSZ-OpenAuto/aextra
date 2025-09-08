@@ -1,10 +1,10 @@
 ---
-
+import astroImg from "@/assets/astro.svg";
 ---
 
-<footer class="w-full bg-gray-100">
+<footer class="w-full bg-gray-100 pb-4">
   <div
-    class="h-12 mx-6 flex items-center justify-start text-size-3 text-gray-700 hover:text-dark-900 cursor-pointer"
+    class="text-size-3 hover:text-dark-900 mx-6 flex h-12 cursor-pointer items-center justify-start text-gray-700 transition-all duration-300 ease-in-out xl:px-24 2xl:px-32"
   >
     <svg
       height="12"
@@ -34,15 +34,21 @@
   </div>
   <hr class="border-gray-200" />
   <div
-    class="flex flex-col justify-start items-around mx-6 my-9 text-4xl text-size-3"
-    style="color: rgb(80, 80, 80)"
+    class="mx-6 my-9 flex flex-col items-start justify-start text-gray-500 transition-all duration-300 ease-in-out xl:px-24 2xl:px-32"
   >
-    <div class="font-bold text-size-4">由 Astro 驱动</div>
-    <div class="w-full h-20 flex flex-col justify-start items-around">
-      <div>© 2025 HITSZ OpenAuto</div>
-      <div>
-        <span class="font-bold">版权声明：</span>本站采用 知识共享署名-非商业性使用-相同方式共享 4.0
-        国际许可协议 (CC BY-NC-SA 4.0) 进行许可。
+    <div class="my-4 text-sm font-bold">
+      由
+      <img class="w-22 mx-1 inline h-10" src={astroImg.src} /> 强力驱动
+    </div>
+    <div class="flex w-full flex-col items-start justify-start">
+      <div class="my-0 text-xs">© 2025 HITSZ OpenAuto</div>
+      <div class="my-0 text-xs">
+        <span class="font-bold">版权声明：</span>本站采用
+        <a
+          class="mx-1 inline underline"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans"
+          >知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议 (CC BY-NC-SA 4.0)</a
+        >进行许可。
       </div>
     </div>
   </div>

@@ -46,14 +46,14 @@ export default function SetPageWidth({ normal, expand }: Props) {
         <button
           onClick={setPageWidth}
           className={cn(
-            "p-2 text-current hidden md:block transition-all duration-300",
+            "hidden p-2 text-current transition-all duration-300 md:block",
             width === normal ? "opacity-50 hover:opacity-100" : "opacity-100 hover:opacity-50",
           )}
         >
           {content}
         </button>
       ) : (
-        <button className="p-2 text-current hidden md:block transition-all duration-300 opacity-50 hover:opacity-100">
+        <button className="hidden p-2 text-current opacity-50 transition-all duration-300 hover:opacity-100 md:block">
           {content}
         </button>
       ),
