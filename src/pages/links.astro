@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LinkList from '../components/LinkList.astro';
+---
+
+<BaseLayout>
+    <div class="text-center mt-9 text-4xl font-bold text-weight-500">友链</div>
+    <LinkList listName="友链类型1"/>
+    <LinkList listName="友链类型2"/>
+    <LinkList listName="友链类型3"/>
+
+    <script is:inline>
+        let currentSharpBtn = null;
+
+        function isDescendant(parent, child) {
+            return parent && child && parent.contains(child);
+        }
+        function toggleSharpBtn(sharpBtn) {
+            if (!sharpBtn) return;
+
+            if (sharpBtn.classList.contains('opacity-20')) {
+                sharpBtn.classList.remove('opacity-20');
+                sharpBtn.classList.add('opacity-0');
+            } else if (sharpBtn.classList.contains('opacity-0')) {
+                sharpBtn.classList.remove('opacity-0');
+                sharpBtn.classList.add('opacity-20');
+            }
+        }
+        function scrollToSharpBtn(sharpBtn) {
+            if (!sharpBtn) return;
+            const rect = sharpBtn.getBoundingClientRect();
+            const navBar = document.querySelector('.nav-bar');
+            const navBarOffset = navBar ? navBar.offsetHeight : 0;
+            const dist = rect.top + window.pageYOffset - navBarOffset - 10;
+            window.scrollTo({ top: Math.max(0, dist), behavior: 'smooth' });
+        }
+
+        const curScript = document.currentScript;
+        const parent = curScript.parentElement;
+        parent.addEventListener("click", (e) => {
+            const lists = parent.querySelectorAll('.link-list');
+            for (const list of lists) {
+                if (isDescendant(list, e.target)) {
+                    const sharpBtn = list.querySelector('.sharp-btn');
+                    if (sharpBtn && isDescendant(sharpBtn, e.target)) {
+                        toggleSharpBtn(sharpBtn);
+                        toggleSharpBtn(currentSharpBtn);
+                        currentSharpBtn = sharpBtn;
+                    }
+
+                    scrollToSharpBtn(sharpBtn);
+                    break;
+                }
+            }
+        });
+    </script>
+</BaseLayout>
