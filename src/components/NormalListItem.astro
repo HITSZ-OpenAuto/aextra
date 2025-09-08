@@ -20,23 +20,23 @@ const { title, description, link, pubDate } = Astro.props;
   }
 </style>
 <div
-  class="normal-list-item m-3 w-full bg-gray-30 border-1 border-gray-200 transform-gpu flex flex-col justify-evenly items-start rounded-xl pt-2 pb-4 pl-6 pr-4"
+  class="normal-list-item bg-gray-30 border-1 m-3 flex w-full transform-gpu flex-col items-start justify-evenly rounded-xl border-gray-200 pb-4 pl-6 pr-4 pt-2"
 >
-  <a class="text-left my-4 font-bold text-size-6 cursor-pointer" href={link}>
+  <a class="text-size-6 my-4 cursor-pointer text-left font-bold" href={link}>
     {title}
   </a>
-  <div class="text-left my-1 font-light">
+  <div class="my-1 text-left font-light">
     {description}
   </div>
-  <a href={link} class="block mt-2 mb-1">
+  <a href={link} class="mb-1 mt-2 block">
     <span
-      class="underline underline-offset-4 decoration-from-font"
+      class="underline decoration-from-font underline-offset-4"
       style="color: rgb(59, 130, 246);"
     >
       更多 →
     </span>
   </a>
-  <div class="mt-4 text-size-3.5 text-gray-400">
+  <div class="text-size-3.5 mt-4 text-gray-400">
     {pubDate}
   </div>
 </div>
