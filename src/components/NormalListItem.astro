@@ -1,38 +1,42 @@
 ---
 interface Props {
-    title: string;
-    description: string;
-    link: string;
-    pubDate: string;
+  title: string;
+  description: string;
+  link: string;
+  pubDate: string;
 }
 
 const { title, description, link, pubDate } = Astro.props;
 ---
 
 <style is:global>
-    /* define transition */
-    .normal-list-item {
-        will-change: transform;
-        transition: transform 300ms ease;
-    }
-    .normal-list-item:hover {
-        transform: translateX(4%);
-    }
+  /* define transition */
+  .normal-list-item {
+    will-change: transform;
+    transition: transform 300ms ease;
+  }
+  .normal-list-item:hover {
+    transform: translateX(4%);
+  }
 </style>
-<div class="normal-list-item m-3 w-full bg-gray-30 border-1 border-gray-200 transform-gpu flex flex-col justify-evenly items-start rounded-xl pt-2 pb-4 pl-6 pr-4">
-    <a class="text-left my-4 font-bold text-size-6 cursor-pointer"
-       href={link}>
-        {title}
-    </a>
-    <div class="text-left my-1 font-light">
-        {description}
-    </div>
-    <a href={link} class="block mt-2 mb-1">
-        <span class="underline underline-offset-4 decoration-from-font" style="color: rgb(59, 130, 246);">
-            更多 →
-        </span>
-    </a>
-    <div class="mt-4 text-size-3.5 text-gray-400">
-        {pubDate}
-    </div>
+<div
+  class="normal-list-item m-3 w-full bg-gray-30 border-1 border-gray-200 transform-gpu flex flex-col justify-evenly items-start rounded-xl pt-2 pb-4 pl-6 pr-4"
+>
+  <a class="text-left my-4 font-bold text-size-6 cursor-pointer" href={link}>
+    {title}
+  </a>
+  <div class="text-left my-1 font-light">
+    {description}
+  </div>
+  <a href={link} class="block mt-2 mb-1">
+    <span
+      class="underline underline-offset-4 decoration-from-font"
+      style="color: rgb(59, 130, 246);"
+    >
+      更多 →
+    </span>
+  </a>
+  <div class="mt-4 text-size-3.5 text-gray-400">
+    {pubDate}
+  </div>
 </div>

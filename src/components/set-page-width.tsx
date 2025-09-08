@@ -1,11 +1,10 @@
+import { pageWidth } from "@/stores";
 import { useStore } from "@nanostores/react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 
+import { cn } from "@/utils";
 import ExpandDark from "@/assets/icon/expand-dark.svg";
 import Expand from "@/assets/icon/expand.svg";
-
-import { pageWidth } from "../stores";
-import { cn } from "../utils.ts";
 
 interface Props {
   normal: string;

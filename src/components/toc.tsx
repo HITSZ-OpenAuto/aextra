@@ -2,7 +2,7 @@
 import type { MarkdownHeading } from "astro";
 import React, { useEffect, useMemo, useState, type HTMLAttributes } from "react";
 
-import { cn, throttle } from "../utils.ts";
+import { cn, throttle } from "@/utils";
 
 interface Props {
   headings: MarkdownHeading[];
