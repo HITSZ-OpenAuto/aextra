@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AboutItem from "@/components/AboutItem.astro";
+import SharpButtonEffect from "@/components/sharp-button-effect.tsx";
+
+const titleId = "about-page";
+---
+
+<BaseLayout>
+    <div class="text-center mt-9 text-4xl font-bold text-weight-500" id={titleId}>友链</div>
+    <AboutItem name="愿景"/>
+    <AboutItem name="历史"/>
+    <AboutItem name="参与"/>
+    <AboutItem name="鸣谢"/>
+
+    <SharpButtonEffect titleId={titleId} client:load />
+</BaseLayout>

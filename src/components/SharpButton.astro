@@ -1,0 +1,15 @@
+---
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="flex justify-start items-center w-full px-2 mt-9 mb-2 text-3xl font-bold text-weight-500">
+    {name}
+    <a class="sharp-btn mx-3 opacity-0 transition-opacity duration-200 ease hover:opacity-20 cursor-pointer">
+        #
+    </a>
+</div>
+<hr class="w-full border-t-2 border-gray-200 dark:border-neutral-800" />

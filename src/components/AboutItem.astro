@@ -1,0 +1,13 @@
+---
+import SharpButton from './SharpButton.astro';
+
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="link-list mx-auto w-full lg:w-[1000px] lg:max-w-[1000px] flex flex-col justify-between items-center">
+    <SharpButton name={name} />
+</div>
