@@ -5,6 +5,11 @@ type ThemeConfig = z.infer<typeof ITheme>;
 
 export const dataFormat = "MMM DD, YYYY";
 
+// GitHub repo name, used for fetching contributors
+export const repoName = "HITSZ-OpenAuto/hoa-moe";
+// GitHub API page number for contributors
+export const page = 1;
+
 export const theme: ThemeConfig = {
   // === Basic configuration ===
   /** SiteName for your website. Will be used in metadata and as browser tab title. */

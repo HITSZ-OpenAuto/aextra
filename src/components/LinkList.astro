@@ -1,25 +1,62 @@
 ---
-import LinkListItem from './LinkListItem.astro';
 import chrome from "@/assets/icon/chrome-test.svg";
-import SharpButton from './SharpButton.astro';
+
+import LinkListItem from "./LinkListItem.astro";
+import SharpButton from "./SharpButton.astro";
 
 interface Props {
-    listName: string;
+  listName: string;
 }
 
 const { listName } = Astro.props;
 ---
 
-<div class="link-list mx-auto w-full lg:w-[1000px] lg:max-w-[1000px] flex flex-col justify-between items-center">
-    <SharpButton name={listName} />
-    <div class="my-2 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-        <LinkListItem icon={chrome.src} title="链接标题" description="链接描述" link="https://example.com"/>
-    </div>
-
+<div
+  class="link-list mx-auto flex w-full flex-col items-center justify-between lg:w-[1000px] lg:max-w-[1000px]"
+>
+  <SharpButton name={listName} />
+  <div class="my-2 grid w-full grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+  </div>
 </div>

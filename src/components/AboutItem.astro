@@ -1,13 +1,41 @@
 ---
-import SharpButton from './SharpButton.astro';
+import SharpButton from "./SharpButton.astro";
 
 interface Props {
-    name: string;
+  name: string;
 }
 
 const { name } = Astro.props;
 ---
 
-<div class="link-list mx-auto w-full lg:w-[1000px] lg:max-w-[1000px] flex flex-col justify-between items-center">
-    <SharpButton name={name} />
+<div
+  class="link-list mx-auto flex w-full flex-col items-center justify-between lg:w-[1000px] lg:max-w-[1000px]"
+>
+  <SharpButton name={name} />
+  <main class="about-item-main mt-3 w-full">
+    <div class="underline-offset-4">
+      <slot />
+      <style is:inline>
+        .about-item-main ul {
+          list-style-type: disc;
+          margin: 20px 30px;
+        }
+        .about-item-main li {
+          margin: 6px 0 6px 0;
+        }
+        .about-item-main p {
+          margin: 7px 7px;
+        }
+        .about-item-main img {
+          margin: auto;
+          margin-top: 40px;
+          margin-bottom: 40px;
+        }
+        .about-item-main a {
+          color: rgb(36, 131, 209);
+          text-decoration: underline;
+        }
+      </style>
+    </div>
+  </main>
 </div>

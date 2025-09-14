@@ -1,17 +1,54 @@
 ---
+import { getCollection, render } from "astro:content";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutItem from "@/components/AboutItem.astro";
 import SharpButtonEffect from "@/components/sharp-button-effect.tsx";
+import Shadow from "@/assets/HITSZOpenAutoShadow.webp";
 
 const titleId = "about-page";
+
+// get collection asynchronously
+async function getContents() {
+  const collection = await getCollection("about");
+  const map: { [key: string]: AstroComponentFactory } = {};
+
+  await Promise.all(
+    collection.map(async (item) => {
+      // plain Markdown -> item.body is an HTML string
+      const { Content } = await render(item);
+      map[item.data.title] = Content;
+    }),
+  );
+
+  return map;
+}
+
+const contents = await getContents();
+const titles = ["愿景", "历史", "参与", "鸣谢"];
 ---
 
 <BaseLayout>
-    <div class="text-center mt-9 text-4xl font-bold text-weight-500" id={titleId}>友链</div>
-    <AboutItem name="愿景"/>
-    <AboutItem name="历史"/>
-    <AboutItem name="参与"/>
-    <AboutItem name="鸣谢"/>
+  <h1 class="text-weight-500 mt-9 text-center text-4xl font-bold" id={titleId}>关于</h1>
+  <div class="mt-5 flex w-full items-center justify-center">
+    <img src={Shadow.src} class="m-10 w-80" />
+  </div>
 
-    <SharpButtonEffect titleId={titleId} client:load />
+  <div class="my-6 flex w-full list-disc flex-col items-start justify-around xl:items-center">
+    {
+      titles.map((title) => {
+        const Content = contents[title];
+        return (
+          <>
+            <AboutItem name={title}>
+              <Content />
+            </AboutItem>
+          </>
+        );
+      })
+    }
+  </div>
+
+  <SharpButtonEffect titleId={titleId} client:load />
 </BaseLayout>
