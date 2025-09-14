@@ -1,5 +1,5 @@
 ---
-title: '鸣谢'
+title: "鸣谢"
 ---
 
 由衷感谢每一位 HITSZ OpenAuto 的贡献者：

@@ -1,16 +1,14 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import LinkList from '@/components/LinkList.astro';
-import SharpButtonEffect from '@/components/sharp-button-effect.tsx';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import LinkList from "@/components/LinkList.astro";
+import SharpButtonEffect from "@/components/sharp-button-effect.tsx";
 
 const titleId = "links-page";
 ---
 
 <BaseLayout>
-    <div class="text-center mt-9 text-4xl font-bold text-weight-500" id={titleId}>友链</div>
-    <LinkList listName="友链类型1"/>
-    <LinkList listName="友链类型2"/>
-    <LinkList listName="友链类型3"/>
+  <div class="text-weight-500 mt-9 text-center text-4xl font-bold" id={titleId}>友链</div>
+  <LinkList listName="test" />
 
-    <SharpButtonEffect titleId={titleId} client:load/>
+  <SharpButtonEffect titleId={titleId} client:load />
 </BaseLayout>
