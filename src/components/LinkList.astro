@@ -14,7 +14,9 @@ const { listName } = Astro.props;
 <div
   class="link-list mx-auto flex w-full flex-col items-center justify-between lg:w-[1000px] lg:max-w-[1000px]"
 >
-  <SharpButton name={listName} />
+  <SharpButton>
+    {listName}
+  </SharpButton>
   <div class="my-2 grid w-full grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
     <LinkListItem
       icon={chrome.src}

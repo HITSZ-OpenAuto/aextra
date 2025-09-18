@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import LinkList from "@/components/LinkList.astro";
-import SharpButtonEffect from "@/components/sharp-button-effect.tsx";
+import SharpButtonEffect from "@/components/md-title-effect";
 
 const titleId = "links-page";
 ---
@@ -9,6 +9,5 @@ const titleId = "links-page";
 <BaseLayout>
   <div class="text-weight-500 mt-9 text-center text-4xl font-bold" id={titleId}>友链</div>
   <LinkList listName="test" />
-
-  <SharpButtonEffect titleId={titleId} client:load />
+  <SharpButtonEffect client:load />
 </BaseLayout>

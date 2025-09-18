@@ -1,6 +1,19 @@
----
-title: "鸣谢"
----
+## 愿景
+
+- 消除信息不对等，追求更有意义的评价体系。
+- 分享课程资料、学习方法，最大程度减少学习弯路。
+
+## 历史
+
+HITSZ 自动化课程攻略共享计划于 2022 年 6 月由 [lmh12138](https://github.com/lmh12138) 创建，2023 年 11 月开始由 [HITSZ OpenAuto](https://github.com/HITSZ-OpenAuto) 维护。
+
+## 参与
+
+如果你有可供分享的资料，欢迎创建 Pull Request 为对应课程的仓库增加新内容；如果对仓库中的内容有疑问或建议，可以通过创建 Issue 的方式提出。
+
+具体方式可以阅读我们的 [参与指南](https://hoa.moe/blog/contribution-guide/)。
+
+## 鸣谢
 
 由衷感谢每一位 HITSZ OpenAuto 的贡献者：
 

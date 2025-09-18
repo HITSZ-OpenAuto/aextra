@@ -1,54 +1,29 @@
 ---
-import { getCollection, render } from "astro:content";
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import { getEntry, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AboutItem from "@/components/AboutItem.astro";
-import SharpButtonEffect from "@/components/sharp-button-effect.tsx";
 import Shadow from "@/assets/HITSZOpenAutoShadow.webp";
 
 const titleId = "about-page";
 
-// get collection asynchronously
-async function getContents() {
-  const collection = await getCollection("about");
-  const map: { [key: string]: AstroComponentFactory } = {};
-
-  await Promise.all(
-    collection.map(async (item) => {
-      // plain Markdown -> item.body is an HTML string
-      const { Content } = await render(item);
-      map[item.data.title] = Content;
-    }),
-  );
-
-  return map;
+const aboutEntry: CollectionEntry<"about"> | undefined = await getEntry("about", "about");
+if (!aboutEntry) {
+  throw new Error("About entry not found");
 }
-
-const contents = await getContents();
-const titles = ["愿景", "历史", "参与", "鸣谢"];
+const { Content } = await render(aboutEntry);
 ---
 
-<BaseLayout>
-  <h1 class="text-weight-500 mt-9 text-center text-4xl font-bold" id={titleId}>关于</h1>
+<BaseLayout article>
+  <div class="text-weight-500 mt-9 text-center text-4xl font-bold" id={titleId}>关于</div>
   <div class="mt-5 flex w-full items-center justify-center">
     <img src={Shadow.src} class="m-10 w-80" />
   </div>
 
   <div class="my-6 flex w-full list-disc flex-col items-start justify-around xl:items-center">
-    {
-      titles.map((title) => {
-        const Content = contents[title];
-        return (
-          <>
-            <AboutItem name={title}>
-              <Content />
-            </AboutItem>
-          </>
-        );
-      })
-    }
+    <div class="about-block">
+      <!-- replace h1 with SharpButton -->
+      <Content />
+    </div>
   </div>
-
-  <SharpButtonEffect titleId={titleId} client:load />
 </BaseLayout>
