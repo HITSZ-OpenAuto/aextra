@@ -7,5 +7,4 @@ import UnoCSS from "unocss/astro";
 export default defineConfig({
   integrations: [UnoCSS(), react()],
   site: "https://hoa.moe",
-  markdown: { syntaxHighlight: "prism" },
 });

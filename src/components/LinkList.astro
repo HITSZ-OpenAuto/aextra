@@ -13,7 +13,7 @@ const { listName } = Astro.props;
 <div
   class="link-list mx-auto flex w-full flex-col items-center justify-between lg:w-[1000px] lg:max-w-[1000px]"
 >
-  <h2>
+  <h2 id={listName}>
     {listName}
   </h2>
   <div class="mb-8 mt-3 grid w-full grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">

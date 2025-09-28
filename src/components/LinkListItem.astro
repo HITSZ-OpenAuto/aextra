@@ -11,42 +11,20 @@ const { icon, title, description, link } = Astro.props;
 
 <a
   href={link}
-  class="bg-gray-30 h-18 rounded-4xl my-2 flex w-full transform-gpu cursor-pointer items-center justify-evenly border-[2px] border-gray-200 p-2 no-underline transition-transform duration-200 ease-out hover:translate-y-[4%] hover:scale-[1.04] hover:shadow-[0px_4px_20px_rgba(0,0,0,0.1)]"
+  class="bg-gray-30 h-18 rounded-4xl my-2 flex w-full transform-gpu cursor-pointer items-center justify-evenly border-[2px] border-gray-200 p-2 no-underline transition-transform duration-200 ease-out hover:translate-y-[4%] hover:scale-[1.04] hover:shadow-[0px_4px_20px_rgba(0,0,0,0.1)] text-[rgb(48,48,48)] hover:text-[rgb(80,80,80)]"
 >
   <span class="m-2 flex">
     <img src={icon} class="h-12 w-12" />
   </span>
   <span class="w-[45%]">
-    <div class="text-size-5 h-8 w-full font-bold" style="color: rgb(48, 48, 48);">
+    <div class="text-size-5 h-8 w-full font-bold">
       {title}
     </div>
     <div
       class="text-size-4 flex h-6 w-full items-center justify-start font-light"
-      style="color: rgb(83, 83, 83);"
     >
       {description}
     </div>
-    <script is:inline>
-      (function () {
-        const curScript = document.currentScript;
-        if (!curScript) return;
-        const description = curScript.previousElementSibling;
-        if (!description) return;
-        const title = description.previousElementSibling;
-        if (!title) return;
-        const listItem = curScript?.parentElement?.parentElement;
-        if (!listItem) return;
-
-        listItem.addEventListener("mouseover", () => {
-          title.style.setProperty("color", "rgb(80, 80, 80)");
-          description.style.setProperty("color", "rgb(150, 150, 150)");
-        });
-        listItem.addEventListener("mouseleave", () => {
-          title.style.setProperty("color", "rgb(48, 48, 48)");
-          description.style.setProperty("color", "rgb(83, 83, 83)");
-        });
-      })();
-    </script>
   </span>
   <span class="flex">
     <span class="h-3 w-3 rounded-full bg-green-400"></span>
