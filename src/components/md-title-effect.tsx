@@ -11,8 +11,7 @@ export default function MdTitleEffect() {
     // insert a label after every title
     for (const h of hs) {
       const a = document.createElement("a");
-      const path = window.location.pathname.replace(/\/$/, ""); // remove trailing slash
-      a.href = `${path}/#${h.id}`;
+      a.href = `#${h.id}`;
       a.className = "md-anchor";
       h.insertAdjacentElement("beforeend", a);
     }

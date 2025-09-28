@@ -29,11 +29,11 @@ export const theme: ThemeConfig = {
 
   navbar: {
     items: [
-      { text: "文档", href: "/docs" },
-      { text: "博客", href: "/blog" },
-      { text: "新闻", href: "/news" },
-      { text: "友链", href: "/links" },
-      { text: "关于", href: "/about" },
+      { text: "文档", href: "/docs/" },
+      { text: "博客", href: "/blog/" },
+      { text: "新闻", href: "/news/" },
+      { text: "友链", href: "/links/" },
+      { text: "关于", href: "/about/" },
     ],
   },
 
