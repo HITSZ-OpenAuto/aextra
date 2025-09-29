@@ -18,7 +18,6 @@ export default defineConfig({
           "padding-bottom": "10px",
           "border-bottom": "2px solid rgba(230, 230, 230, 0.911)",
           "--md-after-opacity": "0",
-          "scroll-behavior": "smooth",
           "scroll-margin-top": "80px", // adjust to nav-bar height + buffer (measure in dev tools)
         },
 
