@@ -1,8 +1,10 @@
 ---
+import "@/assets/global.css";
+
 import { theme } from "@/config";
 
-import BaseHead from "@/components/BaseHead.astro";
 import BaseFooter from "@/components/BaseFooter.astro";
+import BaseHead from "@/components/BaseHead.astro";
 import NavBar from "@/components/NavBar.astro";
 import { cn } from "@/utils";
 
@@ -33,7 +35,7 @@ const { title, article } = Astro.props;
       })();
     </script>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="flex min-h-screen flex-col">
     <NavBar items={navbar.items} article={article} />
     <div class="w-full flex-1">
       <div
@@ -45,11 +47,11 @@ const { title, article } = Astro.props;
         <main class=`max-w-6xl w-full break-words flex min-w-0 justify-center pb-8`>
           {
             article ? (
-              <article class="prose w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+              <article class="prose w-full max-w-6xl min-w-0 px-6 pt-4 md:px-12">
                 <slot />
               </article>
             ) : (
-              <div class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+              <div class="w-full max-w-6xl min-w-0 px-6 pt-4 md:px-12">
                 <slot />
               </div>
             )
