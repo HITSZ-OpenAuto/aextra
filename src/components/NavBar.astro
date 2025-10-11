@@ -67,7 +67,7 @@ const { items, article } = Astro.props;
     {article && <SetPageWidth {...theme.page.width} client:load />}
     <label class="swap swap-rotate size-6">
       <!-- this hidden checkbox controls the state -->
-      <input data-toggle-theme="dark,light" data-act-class="ACTIVECLASS" type="checkbox" />
+      <input data-toggle-theme="dark,light" type="checkbox" />
 
       <!-- sun icon -->
       <svg
