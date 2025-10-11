@@ -41,7 +41,7 @@ const { title, article } = Astro.props;
         // "theme" LocalStorage value is set by the package to remember user preference.
         // The value is checked and applied before rendering anything.
         const storedTheme = localStorage.getItem("theme");
-        if (storedTheme) {
+        if (storedTheme && storedTheme !== "system") {
           document.documentElement.setAttribute("data-theme", storedTheme);
         } else {
           // If the theme is not set, the system default theme will be used.
@@ -50,18 +50,12 @@ const { title, article } = Astro.props;
             document.documentElement.setAttribute("data-theme", "dark");
           }
           mq.addEventListener("change", (e) => {
-            if (!localStorage.getItem("theme")) {
+            if (!localStorage.getItem("theme") || localStorage.getItem("theme") === "system") {
               document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light");
             }
           });
         }
       })();
-    </script>
-    <script>
-      import { themeChange } from "theme-change";
-
-      themeChange();
-      // 👆 you could import the CDN directly instead of these two lines
     </script>
   </head>
   <body>
