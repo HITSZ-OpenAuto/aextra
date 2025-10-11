@@ -1,7 +1,7 @@
 import { theme as themeStore } from "@/stores";
 import { cn } from "@/utils.ts";
 import { useStore } from "@nanostores/react";
-import { useCallback, useMemo, type HTMLAttributes, type JSX } from "react";
+import { useCallback, type HTMLAttributes, type JSX } from "react";
 
 const themeIconMap: Record<string, JSX.Element> = {
   system: (
@@ -37,42 +37,27 @@ const themeIconMap: Record<string, JSX.Element> = {
 export default function ThemeSwitcher({ className, ...props }: HTMLAttributes<HTMLButtonElement>) {
   const theme = useStore(themeStore);
   const switchTheme = useCallback(() => {
-    const isSystemThemeDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (theme === "system") {
-      // if user theme is system, switch to light or dark
-      if (isSystemThemeDark) {
-        document.documentElement.setAttribute("data-theme", "light");
-        themeStore.set("light");
-      } else {
-        document.documentElement.setAttribute("data-theme", "dark");
-        themeStore.set("dark");
-      }
-    } else {
-      if (isSystemThemeDark && theme === "light") {
-        // if system theme is dark and user theme is light, switch bark to dark
-        document.documentElement.setAttribute("data-theme", "dark");
-        themeStore.set("dark");
-      } else if (!isSystemThemeDark && theme === "dark") {
-        // if system theme is light and user theme is dark, switch bark to light
-        document.documentElement.setAttribute("data-theme", "light");
-        themeStore.set("light");
-      } else {
-        // if system theme matchs user theme, switch bark to system
-        document.documentElement.setAttribute("data-theme", isSystemThemeDark ? "dark" : "light");
-        themeStore.set("system");
-      }
-    }
+    const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // define theme cycle
+    const cycle: Record<string, string> = {
+      system: isSystemDark ? "light" : "dark",
+      light: isSystemDark ? "dark" : "system",
+      dark: isSystemDark ? "system" : "light",
+    };
+
+    const nextTheme = cycle[theme] || "system";
+
+    // update theme
+    const effectiveTheme = nextTheme === "system" ? (isSystemDark ? "dark" : "light") : nextTheme;
+
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+    themeStore.set(nextTheme);
   }, [theme]);
-  return useMemo(
-    () => (
-      <button
-        {...props}
-        className={cn("size-6", "rounded-full", className)}
-        onClick={() => switchTheme()}
-      >
-        {themeIconMap[theme]}
-      </button>
-    ),
-    [theme, switchTheme],
+
+  return (
+    <button {...props} className={cn("size-6", "rounded-full", className)} onClick={switchTheme}>
+      {themeIconMap[theme]}
+    </button>
   );
 }
