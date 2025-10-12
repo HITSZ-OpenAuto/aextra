@@ -3,42 +3,13 @@
 ---
 
 <footer class="w-full bg-gray-100">
-  <div
-    class="h-12 mx-6 flex items-center justify-start text-size-3 text-gray-700 hover:text-dark-900 cursor-pointer"
-  >
-    <svg
-      height="12"
-      class="group-data-[theme=dark]:hidden"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentcolor"
-      aria-hidden="true"
-      ><path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003.0 0012 21a9.003 9.003.0 008.354-5.646z"
-      ></path></svg
-    >
-    <p class="mx-1">深色</p>
-    <script is:inline>
-      (function () {
-        const script = document.currentScript;
-        const p = script.previousElementSibling;
-
-        p.addEventListener("click", () => {
-          // TODO: toggle theme
-        });
-      })();
-    </script>
-  </div>
   <hr class="border-gray-200" />
   <div
-    class="flex flex-col justify-start items-around mx-6 my-9 text-4xl text-size-3"
+    class="items-around mx-6 my-9 flex flex-col justify-start text-sm"
     style="color: rgb(80, 80, 80)"
   >
-    <div class="font-bold text-size-4">由 Astro 驱动</div>
-    <div class="w-full h-20 flex flex-col justify-start items-around">
+    <div class="font-bold">由 Astro 驱动</div>
+    <div class="items-around flex h-20 w-full flex-col justify-start">
       <div>© 2025 HITSZ OpenAuto</div>
       <div>
         <span class="font-bold">版权声明：</span>本站采用 知识共享署名-非商业性使用-相同方式共享 4.0
