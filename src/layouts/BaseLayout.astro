@@ -6,6 +6,7 @@ import { theme } from "@/config";
 import BaseFooter from "@/components/BaseFooter.astro";
 import BaseHead from "@/components/BaseHead.astro";
 import NavBar from "@/components/NavBar.astro";
+import MdTitleEffect from "@/components/md-title-effect";
 import { cn } from "@/utils";
 
 const { navbar } = theme;
@@ -69,20 +70,21 @@ const { title, article } = Astro.props;
       >
         {/* left sidebar — used for global document index or navigation across pages */}
         {/* ⚠️ do not remove this aside: it defines the base grid and keeps layout alignment */}
-        <aside class="w-64 md:shrink-0">
+        <aside class="w-40 hidden lg:shrink-0 lg:block">
           <slot name="aside" />
         </aside>
 
         {
           /* main content area — responsive and centered, adapts between article and general content */
         }
-        <main class=`max-w-6xl w-full break-words flex min-w-0 justify-center pb-8`>
+        <main class=`max-w-6xl w-full break-words min-w-0 pb-8`>
           {
             article ? (
               // article mode — use prose style for markdown-like content
               <article class="prose w-full max-w-6xl min-w-0 px-6 pt-4 md:px-12">
                 <slot />
               </article>
+              <MdTitleEffect client:load/>
             ) : (
               // normal mode — plain container without prose styling
               <div class="w-full max-w-6xl min-w-0 px-6 pt-4 md:px-12">
@@ -94,7 +96,7 @@ const { title, article } = Astro.props;
 
         {/* right sidebar — used for table of contents (TOC) within the current article */}
         {/* ⚠️ do not remove this aside: maintains symmetrical spacing and TOC placement */}
-        <aside class="w-64 md:shrink-0">
+        <aside class="w-40 hidden lg:shrink-0 lg:block">
           <slot name="nav" />
         </aside>
       </div>

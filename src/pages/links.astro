@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import LinkList from "@/components/LinkList.astro";
+
+const titleId = "links-page";
+---
+
+<BaseLayout article>
+  <div class="text-weight-500 my-9 text-center text-4xl font-bold" id={titleId}>友链</div>
+  <LinkList listName="测试1" />
+  <LinkList listName="测试2" />
+  <LinkList listName="测试3" />
+</BaseLayout>
