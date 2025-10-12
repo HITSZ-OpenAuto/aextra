@@ -6,6 +6,8 @@ import SetPageWidth from "@/components/set-page-width";
 import { cn } from "@/utils";
 import Logo from "@/assets/logo.webp";
 
+import ThemeSwitcher from "./theme-switcher";
+
 interface Props {
   items: NavBarItem[];
   article?: boolean;
@@ -63,6 +65,8 @@ const { items, article } = Astro.props;
         </path>
       </svg>
       <span class="sr-only">GitHub</span>
-    </a>{article && <SetPageWidth {...theme.page.width} client:load />}
+    </a>
+    {article && <SetPageWidth {...theme.page.width} client:load />}
+    <ThemeSwitcher client:visible />
   </nav>
 </div>
