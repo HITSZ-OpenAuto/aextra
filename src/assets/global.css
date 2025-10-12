@@ -7,7 +7,42 @@
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* Fixing the migrated CSS definitions */
+footer {
+  color: rgb(80, 80, 80);
+}
+
+[data-theme="dark"] footer {
+  color: rgb(180, 180, 180);
+  background-color: rgb(59, 59, 59);
+}
+
+hr {
+  border: 0.5px solid rgb(219, 219, 219);
+}
+
+[data-theme="dark"] hr {
+  border: 0.5px solid rgb(77, 77, 77);
+}
+
+[data-theme="dark"] div {
+  color: rgb(213, 216, 223);
+}
+
+[data-theme="dark"] .link-list-item {
+  color: rgb(196, 199, 206);
+  border: 1px solid rgb(71, 71, 71);
+  background-color: rgb(61, 61, 61);
+}
+
+[data-theme="dark"] .normal-list-item {
+  color: rgb(196, 199, 206);
+}
+
+[data-theme="dark"] .rss-subscription {
+  color: rgb(196, 199, 206);
+  border: 1px solid rgb(46, 46, 46);
+  background-color: rgb(61, 61, 61);
+}
 
 /* Markdown typography styles */
 .prose h1,
@@ -25,6 +60,16 @@
   scroll-margin-top: 80px; /* Adjust to nav-bar height + buffer */
 }
 
+[data-theme="dark"] .prose h1,
+[data-theme="dark"] .prose h2,
+[data-theme="dark"] .prose h3,
+[data-theme="dark"] .prose h4,
+[data-theme="dark"] .prose h5,
+[data-theme="dark"] .prose h6 {
+  color: rgb(196, 199, 206);
+  border-bottom: 1px solid rgba(71, 71, 71, 0.911);
+}
+
 .prose .md-anchor {
   text-decoration: none;
 }
@@ -35,6 +80,7 @@
   margin-left: 10px;
   opacity: var(--md-after-opacity);
   transition: opacity 200ms ease;
+  text-decoration: none;
 }
 
 .prose .md-anchor:hover::after {
@@ -50,6 +96,10 @@
   margin: 15px 10px;
 }
 
+[data-theme="dark"] .prose ul {
+  color: rgb(196, 199, 206);
+}
+
 .prose li {
   margin: 6px 0;
 }
@@ -62,6 +112,10 @@
 
 .prose p {
   margin: 15px 5px 25px 5px;
+}
+
+[data-theme="dark"] .prose p {
+  color: rgb(196, 199, 206);
 }
 
 .prose p a {
