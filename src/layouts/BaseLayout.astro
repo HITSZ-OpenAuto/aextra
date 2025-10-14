@@ -64,8 +64,8 @@ const { title, article } = Astro.props;
     <div class="min-h-screen w-full">
       <div
         class={cn(
-          "mx-auto flex justify-center items-center duration-500",
-          article ? "max-w-[var(--page-width,1280px)]" : "max-w-1280px",
+          "mx-auto flex duration-500",
+          article ? "max-w-[var(--page-width,1280px)]" : "max-w-[1280px]",
         )}
       >
         {/* left sidebar — used for global document index or navigation across pages */}
