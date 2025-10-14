@@ -1,0 +1,57 @@
+---
+import chrome from "@/assets/icon/chrome-test.svg";
+
+import LinkListItem from "./LinkListItem.astro";
+
+interface Props {
+  listName: string;
+}
+
+const { listName } = Astro.props;
+---
+
+<div
+  class="mx-auto flex w-full flex-col items-center justify-between"
+>
+  <h2 id={listName}>
+    {listName}
+  </h2>
+  <div class="mb-8 mt-3 grid w-full grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+    <LinkListItem
+      icon={chrome.src}
+      title="链接标题"
+      description="链接描述"
+      link="https://example.com"
+    />
+  </div>
+</div>

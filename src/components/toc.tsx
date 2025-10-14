@@ -2,7 +2,7 @@
 import type { MarkdownHeading } from "astro";
 import React, { useEffect, useMemo, useState, type HTMLAttributes } from "react";
 
-import { cn, throttle } from "../utils.ts";
+import { cn, throttle } from "@/utils";
 
 interface Props {
   headings: MarkdownHeading[];
@@ -136,7 +136,7 @@ export default function TOC({
   return useMemo(
     () => (
       // h-min is needed here to make sticky work
-      <nav {...props} className={cn("text-sm sticky top-24 max-w-72 h-min ml-6", className)}>
+      <nav {...props} className={cn("sticky top-24 ml-6 h-min max-w-72 text-sm", className)}>
         <ul className="space-y-1">
           <strong>本章目录</strong>
           {items.map((h) => (

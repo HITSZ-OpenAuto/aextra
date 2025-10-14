@@ -1,0 +1,10 @@
+{
+  "name": "aextra",
+  "compatibility_date": "2025-09-07",
+  "assets": {
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

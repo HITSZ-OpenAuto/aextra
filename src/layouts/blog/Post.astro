@@ -2,9 +2,8 @@
 import type { MarkdownHeading } from "astro";
 import type { CollectionEntry } from "astro:content";
 
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import TOC from "@/components/toc";
-
-import BaseLayout from "../BaseLayout.astro";
 
 interface Props {
   data: CollectionEntry<"blog">["data"];

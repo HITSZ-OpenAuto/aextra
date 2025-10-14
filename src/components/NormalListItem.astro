@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  link: string;
+  pubDate: string;
+}
+
+const { title, description, link, pubDate } = Astro.props;
+---
+
+<div
+  class="normal-list-item bg-gray-30 m-3 flex w-full flex-col items-start justify-evenly rounded-xl pt-2 pr-4 pb-4 pl-6"
+>
+  <a class="my-4 cursor-pointer text-left text-xl font-bold" href={link}>
+    {title}
+  </a>
+  <div class="my-1 text-left font-light">
+    {description}
+  </div>
+  <a href={link} class="mt-2 mb-1 block">
+    <span
+      class="underline decoration-from-font underline-offset-4"
+      style="color: rgb(59, 130, 246);"
+    >
+      更多 →
+    </span>
+  </a>
+  <div class="text-size-3.5 mt-4 text-gray-400">
+    {pubDate}
+  </div>
+</div>
