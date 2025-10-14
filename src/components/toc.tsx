@@ -4,6 +4,8 @@ import React, { useEffect, useMemo, useState, type HTMLAttributes } from "react"
 
 import { cn, throttle } from "@/utils";
 
+const TopHeadingLevel = 1;
+
 interface Props {
   headings: MarkdownHeading[];
   minDepth?: number;
@@ -57,7 +59,7 @@ export default function TOC({
         if (activeIndex !== -1) {
           const path = findPath(headings, activeIndex);
           const numbers = [];
-          let depth = 1;
+          let depth = TopHeadingLevel;
           for (let i = 0; i < headings.length; i++) {
             if (headings[i].depth === 1) {
               // start a new part
@@ -147,15 +149,15 @@ export default function TOC({
                 paddingLeft: `calc(var(--spacing) * ${(h.depth - 2) * 2})`,
               }}
             >
-              {h.depth === 1 ? (
-                <a href={`#${h.slug}`} className="block mt-2 my-1">
+              {h.depth === TopHeadingLevel ? (
+                <a href={`#${h.slug}`} className="my-1 mt-2 block">
                   {h.text}
                 </a>
               ) : (
                 <a
                   href={`#${h.slug}`}
                   className={cn("block transition-colors", {
-                    "text-blue-600 font-bold": h.isActive,
+                    "font-bold text-blue-600": h.isActive,
                     "text-gray-600": !h.isActive,
                   })}
                 >
