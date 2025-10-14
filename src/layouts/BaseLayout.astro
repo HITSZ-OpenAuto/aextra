@@ -6,7 +6,6 @@ import { theme } from "@/config";
 import BaseFooter from "@/components/BaseFooter.astro";
 import BaseHead from "@/components/BaseHead.astro";
 import NavBar from "@/components/NavBar.astro";
-import MdTitleEffect from "@/components/md-title-effect";
 import { cn } from "@/utils";
 
 const { navbar } = theme;
@@ -64,13 +63,13 @@ const { title, article } = Astro.props;
     <div class="min-h-screen w-full">
       <div
         class={cn(
-          "mx-auto flex justify-center items-center duration-500",
-          article ? "max-w-[var(--page-width,1280px)]" : "max-w-1280px",
+          "mx-auto flex duration-500",
+          article ? "max-w-[var(--page-width,1280px)]" : "max-w-[1280px]",
         )}
       >
         {/* left sidebar — used for global document index or navigation across pages */}
         {/* ⚠️ do not remove this aside: it defines the base grid and keeps layout alignment */}
-        <aside class="w-40 hidden lg:shrink-0 lg:block">
+        <aside class="hidden w-40 lg:block lg:shrink-0">
           <slot name="aside" />
         </aside>
 
@@ -84,7 +83,6 @@ const { title, article } = Astro.props;
               <article class="prose w-full max-w-6xl min-w-0 px-6 pt-4 md:px-12">
                 <slot />
               </article>
-              <MdTitleEffect client:load/>
             ) : (
               // normal mode — plain container without prose styling
               <div class="w-full max-w-6xl min-w-0 px-6 pt-4 md:px-12">
@@ -96,7 +94,7 @@ const { title, article } = Astro.props;
 
         {/* right sidebar — used for table of contents (TOC) within the current article */}
         {/* ⚠️ do not remove this aside: maintains symmetrical spacing and TOC placement */}
-        <aside class="w-40 hidden lg:shrink-0 lg:block">
+        <aside class="hidden w-40 lg:block lg:shrink-0">
           <slot name="nav" />
         </aside>
       </div>

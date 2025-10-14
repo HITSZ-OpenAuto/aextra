@@ -4,8 +4,11 @@ import React, { useEffect, useMemo, useState, type HTMLAttributes } from "react"
 
 import { cn, throttle } from "@/utils";
 
+const TopHeadingLevel = 1;
+
 interface Props {
   headings: MarkdownHeading[];
+  minDepth?: number;
 }
 
 interface Heading extends MarkdownHeading {
@@ -31,19 +34,22 @@ function findPath(headings: MarkdownHeading[], index: number): number[] {
 
 export default function TOC({
   headings,
+  minDepth = 2,
   className,
   ...props
 }: Props & HTMLAttributes<HTMLDivElement>) {
-  const [activeId, setActiveId] = useState<string>("");
   const [items, setItems] = useState<Heading[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
+      const navbar = document.getElementById("navbar");
+      const navbarHeight = navbar?.offsetHeight || 0;
+      console.log(navbarHeight);
       const offsets = headings
         .map((h) => {
           const el = document.getElementById(h.slug);
           if (!el) return null;
-          const top = el.getBoundingClientRect().top;
+          const top = el.getBoundingClientRect().top - navbarHeight;
           return { id: h.slug, top };
         })
         .filter(Boolean)
@@ -56,10 +62,21 @@ export default function TOC({
         if (activeIndex !== -1) {
           const path = findPath(headings, activeIndex);
           const numbers = [];
-          let depth = 0;
+          let depth = TopHeadingLevel;
           for (let i = 0; i < headings.length; i++) {
+            if (headings[i].depth === 1) {
+              // start a new part
+              depth = 1;
+              numbers.length = 0;
+              newItems.push({
+                ...headings[i],
+                isActive: false,
+                number: "",
+              });
+              continue;
+            }
             if (path.includes(i)) {
-              // continue expanding downwards for those within the path
+              // if the heading is on the path, expand to the next depth
               while (depth < headings[i].depth) {
                 depth++;
                 numbers.push(0);
@@ -70,8 +87,24 @@ export default function TOC({
                 isActive: true,
                 number: numbers.join("."),
               });
-              depth++;
-              numbers.push(0);
+              if (i !== headings.length - 1) {
+                while (depth < headings[i + 1].depth) {
+                  depth++;
+                  numbers.push(0);
+                }
+              }
+            } else if (depth < headings[i].depth && headings[i].depth <= minDepth) {
+              // if the heading depth meets the minimum depth, expand to the current depth
+              while (depth < headings[i].depth) {
+                depth++;
+                numbers.push(0);
+              }
+              numbers[numbers.length - 1]++;
+              newItems.push({
+                ...headings[i],
+                isActive: false,
+                number: numbers.join("."),
+              });
             } else if (headings[i].depth === depth) {
               // show headings at the same depth
               numbers[numbers.length - 1]++;
@@ -95,7 +128,6 @@ export default function TOC({
             }
           }
         }
-        setActiveId(activeId);
         setItems(newItems);
       }
     };
@@ -104,7 +136,7 @@ export default function TOC({
     throttledHandleScroll(); // initial activation
     window.addEventListener("scroll", throttledHandleScroll, { passive: true });
     return () => window.removeEventListener("scroll", throttledHandleScroll);
-  }, [headings]);
+  }, [headings, minDepth]);
 
   return useMemo(
     () => (
@@ -117,24 +149,30 @@ export default function TOC({
               key={h.slug}
               className="flex items-center"
               style={{
-                paddingLeft: `calc(var(--spacing) * ${(h.depth - 1) * 2})`,
+                paddingLeft: `calc(var(--spacing) * ${(h.depth - 2) * 2})`,
               }}
             >
-              <a
-                href={`#${h.slug}`}
-                className={cn("block transition-colors", {
-                  "font-bold text-blue-600": h.isActive,
-                  "text-gray-600": !h.isActive,
-                })}
-              >
-                <span className="">{h.number}. </span>
-                <span>{h.text}</span>
-              </a>
+              {h.depth === TopHeadingLevel ? (
+                <a href={`#${h.slug}`} className="my-1 mt-2 block">
+                  {h.text}
+                </a>
+              ) : (
+                <a
+                  href={`#${h.slug}`}
+                  className={cn("block transition-colors", {
+                    "font-bold text-blue-600": h.isActive,
+                    "text-gray-600": !h.isActive,
+                  })}
+                >
+                  <span className="">{h.number}. </span>
+                  <span>{h.text}</span>
+                </a>
+              )}
             </li>
           ))}
         </ul>
       </nav>
     ),
-    [activeId, items],
+    [className, items, props],
   );
 }
