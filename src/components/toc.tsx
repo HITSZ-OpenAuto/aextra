@@ -42,11 +42,14 @@ export default function TOC({
 
   useEffect(() => {
     const handleScroll = () => {
+      const navbar = document.getElementById("navbar");
+      const navbarHeight = navbar?.offsetHeight || 0;
+      console.log(navbarHeight);
       const offsets = headings
         .map((h) => {
           const el = document.getElementById(h.slug);
           if (!el) return null;
-          const top = el.getBoundingClientRect().top;
+          const top = el.getBoundingClientRect().top - navbarHeight;
           return { id: h.slug, top };
         })
         .filter(Boolean)
