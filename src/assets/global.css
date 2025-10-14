@@ -8,24 +8,23 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 footer {
-  color: rgb(80, 80, 80);
+  background-color: rgb(223, 223, 223);
 }
 
 [data-theme="dark"] footer {
-  color: rgb(180, 180, 180);
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(61, 61, 61);
 }
 
 hr {
-  border: 0.5px solid rgb(219, 219, 219);
+  @apply border-gray-300;
 }
 
 [data-theme="dark"] hr {
-  border: 0.5px solid rgb(77, 77, 77);
+  @apply border-gray-700;
 }
 
 [data-theme="dark"] div {
-  color: rgb(213, 216, 223);
+  color: rgb(196, 199, 206);
 }
 
 [data-theme="dark"] .link-list-item {
@@ -40,8 +39,8 @@ hr {
 
 [data-theme="dark"] .rss-subscription {
   color: rgb(196, 199, 206);
-  border: 1px solid rgb(46, 46, 46);
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(71, 71, 71);
 }
 
 /* Markdown typography styles */
@@ -51,28 +50,38 @@ hr {
 .prose h4,
 .prose h5,
 .prose h6 {
-  @apply scroll-mt-16;
+  color: rgb(196, 199, 206);
+  @apply w-full scroll-mt-18 border-gray-300 border-b-1 p-1 pb-2;
 }
+
+[data-theme="dark"] .prose h1,
+[data-theme="dark"] .prose h2,
+[data-theme="dark"] .prose h3,
+[data-theme="dark"] .prose h4,
+[data-theme="dark"] .prose h5,
+[data-theme="dark"] .prose h6 {
+  @apply border-gray-600;
+}
+
 .prose h1:hover >.anchor-link,
 .prose h2:hover >.anchor-link,
 .prose h3:hover >.anchor-link,
 .prose h4:hover >.anchor-link,
 .prose h5:hover >.anchor-link,
 .prose h6:hover >.anchor-link {
-  @apply opacity-80;
+  @apply opacity-20 font-bold;
 }
 
 .prose ul {
-  list-style-type: disc;
-  margin: 15px 10px;
+  @apply list-disc text-gray-700;
 }
 
 [data-theme="dark"] .prose ul {
-  color: rgb(196, 199, 206);
+  @apply text-gray-300;
 }
 
 .prose li {
-  margin: 6px 0;
+  @apply my-2;
 }
 
 .prose li a {
