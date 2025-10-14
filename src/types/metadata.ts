@@ -1,5 +1,6 @@
 import { z } from "astro:content";
 
+//
 export const nationalMajor = z.object({
   id: z.string(),
   type: z.string(),
@@ -32,7 +33,7 @@ export const GPAImpactType = z.enum(["核心权重", "核心扣分", "GPA"]);
 
 export const ScoreComponent = z.object({
   name: z.string(),
-  percentage: z.number().int().min(0),
+  percentage: z.number().int().min(0).max(100),
 });
 
 export const courseAttribute = z.object({
@@ -42,7 +43,7 @@ export const courseAttribute = z.object({
   class_hours: z.number().min(0).optional(),
   category: z.string(),
   gpa_impact_type: GPAImpactType.optional(),
-  score_components: z.array(ScoreComponent),
+  score_components: z.array(ScoreComponent).min(1),
 });
 
 export type CourseAttribute = z.infer<typeof courseAttribute>;
