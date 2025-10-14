@@ -1,0 +1,29 @@
+---
+import { getEntry, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Shadow from "@/assets/HITSZOpenAutoShadow.webp";
+
+const titleId = "about-page";
+
+const aboutEntry: CollectionEntry<"about"> | undefined = await getEntry("about", "about");
+if (!aboutEntry) {
+  throw new Error("About entry not found");
+}
+const { Content } = await render(aboutEntry);
+---
+
+<BaseLayout article>
+  <div class="text-weight-500 mt-9 text-center text-4xl font-bold" id={titleId}>关于</div>
+  <div class="mt-5 flex w-full items-center justify-center">
+    <img src={Shadow.src} class="m-10 w-80" />
+  </div>
+
+  <div class="my-6 flex w-full list-disc flex-col items-start justify-around xl:items-center">
+    <div class="about-block">
+      <!-- replace h1 with SharpButton -->
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

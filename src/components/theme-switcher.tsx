@@ -1,0 +1,63 @@
+import { theme as themeStore } from "@/stores";
+import { cn } from "@/utils.ts";
+import { useStore } from "@nanostores/react";
+import { useCallback, type HTMLAttributes, type JSX } from "react";
+
+const themeIconMap: Record<string, JSX.Element> = {
+  system: (
+    <svg
+      className="h-full w-full fill-current"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+    </svg>
+  ),
+  light: (
+    <svg
+      className="h-full w-full fill-current"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"></path>
+    </svg>
+  ),
+  dark: (
+    <svg
+      className="h-full w-full fill-current"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"></path>
+    </svg>
+  ),
+};
+
+export default function ThemeSwitcher({ className, ...props }: HTMLAttributes<HTMLButtonElement>) {
+  const theme = useStore(themeStore);
+  const switchTheme = useCallback(() => {
+    const isSystemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // define theme cycle
+    const cycle: Record<string, string> = {
+      system: isSystemDark ? "light" : "dark",
+      light: isSystemDark ? "dark" : "system",
+      dark: isSystemDark ? "system" : "light",
+    };
+
+    const nextTheme = cycle[theme] || "system";
+
+    // update theme
+    const effectiveTheme = nextTheme === "system" ? (isSystemDark ? "dark" : "light") : nextTheme;
+
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+    themeStore.set(nextTheme);
+  }, [theme]);
+
+  return (
+    <button {...props} className={cn("size-6", "rounded-full", className)} onClick={switchTheme}>
+      {themeIconMap[theme]}
+    </button>
+  );
+}

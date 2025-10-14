@@ -1,10 +1,13 @@
 // @ts-check
 import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import UnoCSS from "unocss/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [UnoCSS(), react()],
+  integrations: [react()],
   site: "https://hoa.moe",
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

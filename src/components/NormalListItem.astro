@@ -9,26 +9,16 @@ interface Props {
 const { title, description, link, pubDate } = Astro.props;
 ---
 
-<style is:global>
-  /* define transition */
-  .normal-list-item {
-    will-change: transform;
-    transition: transform 300ms ease;
-  }
-  .normal-list-item:hover {
-    transform: translateX(4%);
-  }
-</style>
 <div
-  class="normal-list-item bg-gray-30 border-1 m-3 flex w-full transform-gpu flex-col items-start justify-evenly rounded-xl border-gray-200 pb-4 pl-6 pr-4 pt-2"
+  class="normal-list-item bg-gray-30 m-3 flex w-full flex-col items-start justify-evenly rounded-xl pt-2 pr-4 pb-4 pl-6"
 >
-  <a class="text-size-6 my-4 cursor-pointer text-left font-bold" href={link}>
+  <a class="my-4 cursor-pointer text-left text-xl font-bold" href={link}>
     {title}
   </a>
   <div class="my-1 text-left font-light">
     {description}
   </div>
-  <a href={link} class="mb-1 mt-2 block">
+  <a href={link} class="mt-2 mb-1 block">
     <span
       class="underline decoration-from-font underline-offset-4"
       style="color: rgb(59, 130, 246);"

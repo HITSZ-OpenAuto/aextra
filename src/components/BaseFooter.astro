@@ -2,36 +2,7 @@
 import astroImg from "@/assets/astro.svg";
 ---
 
-<footer class="w-full bg-gray-100 pb-4">
-  <div
-    class="text-size-3 hover:text-dark-900 mx-6 flex h-12 cursor-pointer items-center justify-start text-gray-700 transition-all duration-300 ease-in-out xl:px-24 2xl:px-32"
-  >
-    <svg
-      height="12"
-      class="group-data-[theme=dark]:hidden"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentcolor"
-      aria-hidden="true"
-      ><path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003.0 0012 21a9.003 9.003.0 008.354-5.646z"
-      ></path></svg
-    >
-    <p class="mx-1">深色</p>
-    <script is:inline>
-      (function () {
-        const script = document.currentScript;
-        const p = script.previousElementSibling;
-
-        p.addEventListener("click", () => {
-          // TODO: toggle theme
-        });
-      })();
-    </script>
-  </div>
+<footer class="w-full bg-gray-100">
   <hr class="border-gray-200" />
   <div
     class="mx-6 my-9 flex flex-col items-start justify-start text-gray-500 transition-all duration-300 ease-in-out xl:px-24 2xl:px-32"
