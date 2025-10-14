@@ -50,8 +50,7 @@ hr {
 .prose h4,
 .prose h5,
 .prose h6 {
-  color: rgb(196, 199, 206);
-  @apply w-full scroll-mt-18 border-gray-300 border-b-1 p-1 pb-2;
+  @apply text-gray-800 w-full scroll-mt-18 border-gray-300 border-b-1 p-1 pb-2;
 }
 
 [data-theme="dark"] .prose h1,
@@ -60,6 +59,7 @@ hr {
 [data-theme="dark"] .prose h4,
 [data-theme="dark"] .prose h5,
 [data-theme="dark"] .prose h6 {
+  color: rgb(196, 199, 206);
   @apply border-gray-600;
 }
 
