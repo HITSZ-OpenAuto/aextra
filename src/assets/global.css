@@ -28,12 +28,15 @@
 }
 
 .prose ul {
-  list-style-type: disc;
-  margin: 15px 10px;
+  @apply list-disc text-gray-700;
+}
+
+[data-theme="dark"] .prose ul {
+  @apply text-gray-300;
 }
 
 .prose li {
-  margin: 6px 0;
+  @apply my-2;
 }
 
 .prose li a {
@@ -44,6 +47,10 @@
 
 .prose p {
   margin: 15px 5px 25px 5px;
+}
+
+[data-theme="dark"] .prose p {
+  color: rgb(196, 199, 206);
 }
 
 .prose p a {

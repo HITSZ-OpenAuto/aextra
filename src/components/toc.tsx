@@ -44,7 +44,6 @@ export default function TOC({
     const handleScroll = () => {
       const navbar = document.getElementById("navbar");
       const navbarHeight = navbar?.offsetHeight || 0;
-      console.log(navbarHeight);
       const offsets = headings
         .map((h) => {
           const el = document.getElementById(h.slug);
