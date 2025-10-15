@@ -7,41 +7,7 @@
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-footer {
-  background-color: rgb(223, 223, 223);
-}
-
-[data-theme="dark"] footer {
-  background-color: rgb(61, 61, 61);
-}
-
-hr {
-  @apply border-gray-300;
-}
-
-[data-theme="dark"] hr {
-  @apply border-gray-700;
-}
-
-[data-theme="dark"] div {
-  color: rgb(196, 199, 206);
-}
-
-[data-theme="dark"] .link-list-item {
-  color: rgb(196, 199, 206);
-  border: 1px solid rgb(71, 71, 71);
-  background-color: rgb(61, 61, 61);
-}
-
-[data-theme="dark"] .normal-list-item {
-  color: rgb(196, 199, 206);
-}
-
-[data-theme="dark"] .rss-subscription {
-  color: rgb(196, 199, 206);
-  background-color: rgb(41, 41, 41);
-  border: 1px solid rgb(71, 71, 71);
-}
+/* Fixing the migrated CSS definitions */
 
 /* Markdown typography styles */
 .prose h1,
@@ -50,26 +16,15 @@ hr {
 .prose h4,
 .prose h5,
 .prose h6 {
-  @apply text-gray-800 w-full scroll-mt-18 border-gray-300 border-b-1 p-1 pb-2;
+  @apply scroll-mt-16;
 }
-
-[data-theme="dark"] .prose h1,
-[data-theme="dark"] .prose h2,
-[data-theme="dark"] .prose h3,
-[data-theme="dark"] .prose h4,
-[data-theme="dark"] .prose h5,
-[data-theme="dark"] .prose h6 {
-  color: rgb(196, 199, 206);
-  @apply border-gray-600;
-}
-
 .prose h1:hover >.anchor-link,
 .prose h2:hover >.anchor-link,
 .prose h3:hover >.anchor-link,
 .prose h4:hover >.anchor-link,
 .prose h5:hover >.anchor-link,
 .prose h6:hover >.anchor-link {
-  @apply opacity-20 font-bold;
+  @apply opacity-80;
 }
 
 .prose ul {
