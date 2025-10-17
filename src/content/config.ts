@@ -1,6 +1,13 @@
 import { defineCollection, z } from "astro:content";
 import { dataFormat } from "@/config";
+import { file } from "astro/loaders";
 import dayjs from "dayjs";
+
+import {
+  courseMetadata,
+  nationalMajor as nationalMajorSchema,
+  schoolMajor as schoolMajorSchema,
+} from "@/types/metadata.ts";
 
 // if the content does not meet the build requirements, the build will fail
 const blog = defineCollection({
@@ -21,11 +28,35 @@ const blog = defineCollection({
   }),
 });
 
-const about = defineCollection({
-  schema: z.object({}),
+const course = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    weight: z.number().int(),
+    editURL: z.string().url().optional(),
+    updateInfo: z
+      .object({
+        date: z.string().transform((str) => dayjs(str).format(dataFormat)),
+        author: z.string(),
+        message: z.string(),
+      })
+      .optional(),
+    metadata: courseMetadata,
+  }),
+});
+
+const nationalMajor = defineCollection({
+  loader: file("src/data/national-major.json"),
+  schema: nationalMajorSchema,
+});
+
+const schoolMajor = defineCollection({
+  loader: file("src/data/school-major.json"),
+  schema: schoolMajorSchema,
 });
 
 export const collections = {
   blog,
-  about,
+  course,
+  nationalMajor,
+  schoolMajor,
 };
