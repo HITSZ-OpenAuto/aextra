@@ -61,18 +61,16 @@ export default function WithChooseMajor({
                 value={majorId}
                 onChange={(e) => setMajor(e.target.value)}
               >
-                <>
-                  {!currentMajor && (
-                    <option disabled value="">
-                      未选择
-                    </option>
-                  )}
-                  {majorList.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.name}
-                    </option>
-                  ))}
-                </>
+                {!currentMajor && (
+                  <option disabled value="">
+                    未选择
+                  </option>
+                )}
+                {majorList.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
             ) : (
               <div className="label text-sm">当前年级暂无专业记录</div>
