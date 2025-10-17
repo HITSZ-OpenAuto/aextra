@@ -1,5 +1,5 @@
 import type { CollectionEntry } from "astro:content";
-import { majorId as majorIdStroe } from "@/stores.ts";
+import { majorId as majorIdStore } from "@/stores.ts";
 import { cn } from "@/utils.ts";
 import { useStore } from "@nanostores/react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
@@ -14,7 +14,7 @@ export default function WithChooseMajor({
   children,
   ...props
 }: Props & React.HTMLAttributes<HTMLDivElement>) {
-  const majorId = useStore(majorIdStroe);
+  const majorId = useStore(majorIdStore);
   const [isChoosing, setIsChoosing] = useState<boolean>(false);
   const [grade, setGrade] = useState<number>();
 
@@ -32,7 +32,7 @@ export default function WithChooseMajor({
   );
 
   const setMajor = useCallback((id: string) => {
-    majorIdStroe.set(id);
+    majorIdStore.set(id);
     setIsChoosing(false);
   }, []);
 
