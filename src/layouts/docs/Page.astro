@@ -1,0 +1,31 @@
+---
+import type { MarkdownHeading } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CourseInfo from "@/components/course-info";
+import TOC from "@/components/toc";
+import WithChooseMajor from "@/components/with-choose-major";
+
+interface Props {
+  data: CollectionEntry<"course">["data"];
+  headings: MarkdownHeading[];
+}
+
+const { data, headings } = Astro.props;
+const { metadata } = data;
+
+const schoolMajors = await getCollection("schoolMajor");
+const majors = schoolMajors.map((major) => major.data);
+---
+
+<BaseLayout article title="课程文档">
+  <h1 class="line-height-loose text-3xl font-bold">{data.title}</h1>
+  <div>
+    <WithChooseMajor majors={majors} client:load>
+      <CourseInfo metadata={metadata} client:visible />
+    </WithChooseMajor>
+  </div>
+  <slot />
+  <TOC slot="nav" headings={headings} className="w-64 shrink-0" client:load />
+</BaseLayout>

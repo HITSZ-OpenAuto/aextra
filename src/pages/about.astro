@@ -1,17 +1,10 @@
 ---
-import { getEntry, render } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { Content } from "@/content/about.md";
 
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Shadow from "@/assets/HITSZOpenAutoShadow.webp";
 
 const titleId = "about-page";
-
-const aboutEntry: CollectionEntry<"about"> | undefined = await getEntry("about", "about");
-if (!aboutEntry) {
-  throw new Error("About entry not found");
-}
-const { Content } = await render(aboutEntry);
 ---
 
 <BaseLayout article>
