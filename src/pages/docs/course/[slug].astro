@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from "astro:content";
+
+import Page from "@/layouts/docs/Page.astro";
+
+// generate a new path for each collection item
+export async function getStaticPaths() {
+  const courses = await getCollection("course");
+  return courses.map((course) => ({
+    params: {
+      // course ids are all capital letters
+      slug: course.slug.toUpperCase(),
+    },
+    props: { course },
+  }));
+}
+const nationalMajors = await getCollection("nationalMajor");
+const schoolMajors = await getCollection("schoolMajor");
+// console.log(nationalMajors);
+// console.log(schoolMajors);
+
+// for your template, you can directly get the item from props
+const { course } = Astro.props;
+const { Content, headings } = await render(course);
+---
+
+<Page data={course.data} headings={headings}>
+  <Content />
+</Page>
