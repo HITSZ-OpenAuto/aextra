@@ -49,7 +49,7 @@ export default function WithChooseMajor({
               className="input input-ghost"
               type="number"
               placeholder="您的入学年份"
-              value={grade}
+              value={grade ?? ""}
               onChange={(e) => setGrade(Number(e.target.value))}
             />
           </label>
